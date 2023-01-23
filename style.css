@@ -1,0 +1,88 @@
+
+
+:root {
+    --teal: #25DFE6;
+    --grey: #707070;
+    --greyBorder: #D3D3D3;
+    --greyBackground: #F5F5F5;
+    --linkTeal: #00C1C9;
+    --white: #FFFFFF;
+    --maxwidth: 1200px;
+}
+
+body {
+    font-family: sans-serif;
+    color:  var(--grey);
+    margin-top: 0;
+    padding-top: 0;
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+
+div.container {
+    width: 100%;
+    max-width: var(--maxwidth);
+    margin: 0 auto;
+}
+
+header {
+    margin-top: 1rem;
+    margin-bottom: 3rem;
+    border: 2px solid var(--greyBorder);
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem;
+}
+
+button {
+    color: var(--grey);
+    background-color: var(--greyBackground);
+    text-decoration: none;
+    padding: .5rem 1rem;
+    border: 2px solid var(--greyBorder);
+    display: inline-block;
+    text-transform: uppercase;
+    font-size: x-large;
+    padding: 1.5rem;
+    margin-right: 1rem;
+    border-bottom: none;
+    
+}
+
+button:hover {
+    color: white;
+    background-color: var(--teal);
+    border: none;
+}
+
+.hidden {
+    visibility: hidden;
+    opacity: 0;
+}
+
+main article {
+    border: 2px solid var(--greyBorder);
+    border-top: 5px solid var(--teal);
+    display: flex;
+    flex-wrap: wrap;
+    padding: 0 1rem;
+    max-width: 1164px;
+    width: 100%;
+    position: absolute;
+    
+}
+
+main article a {
+    color: var(--linkTeal);
+    align-items: left;
+}
+main article h2 {
+    width: 100%;
+    display: block;
+    text-transform: uppercase;
+}
+
+main article ul {
+    padding: 0 1rem;
+    
+}

@@ -94,3 +94,41 @@ const resources = [
         ]
     },
 ]
+
+function renderResources(){
+    let buttonsHTML = ""
+
+    resources.map(button => buttonsHTML += `<button onclick="showArticle()" class="active">${button.category}</button>`)
+
+    document.querySelector("main").innerHTML = buttonsHTML
+
+    let articleHTML = ""
+
+    resources.map(article => articleHTML += `<article class="hidden">
+    <h2>${article.category}</h2>
+    <p>${article.text}</p>
+    <ul>
+        ${article.sources.map(links => 
+        `<li><a href="${links.url}">${links.title}</a></li>`).join("")}
+    </ul>
+    </article>`)
+
+    document.querySelector("main").innerHTML += articleHTML
+    
+    const articleElement = document.querySelectorAll("article")
+
+    if(articleElement.classList.contains())
+}
+
+function showArticle(){
+    const articleElement = document.querySelectorAll("article")
+
+    articleElement.forEach((element) => {
+        element.classList.remove("hidden")
+    });
+
+    
+
+}
+
+renderResources()
