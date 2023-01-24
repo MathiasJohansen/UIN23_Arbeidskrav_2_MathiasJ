@@ -97,20 +97,26 @@ const resources = [
 
 function renderResources(){
     let buttonsHTML = ""
+    let articleHTML = ""
 
-    resources.map((article, makePage) => buttonsHTML += `<button onclick="showArticle(${makePage})" id="button-${makePage}">${article.category}</button>
-    <article id="article-${makePage}" class="hidden">
-    <h2>${article.category}</h2>
-    <p>${article.text}</p>
-    <ul>
-        ${article.sources.map(links => 
-        `<li><a href="${links.url}">${links.title}</a></li>`).join("")}
-    </ul>
-    </article>`)
+    resources.map((button, makePage) => buttonsHTML += `
+    <button onclick="showArticle(${makePage})" class="inactive" id="button-${makePage}">${button.category}</button>`)
 
-    document.querySelector("main").innerHTML = buttonsHTML
+    resources.map((article, makePage) => articleHTML += `
+        <article id="article-${makePage}" class="hidden">
+            <h2>${article.category}</h2>
+                <p>${article.text}</p>
+                    <ul>
+                        ${article.sources.map(links => 
+                        `<li><a href="${links.url}">${links.title}</a></li>`).join("")}
+                    </ul>
+        </article>`)
+    
 
-    document.querySelector("button").classList.add("active")
+    document.querySelector("main").innerHTML += buttonsHTML
+    document.querySelector("main").innerHTML += articleHTML
+
+    document.querySelector("button").classList.replace("inactive", "active")
     document.querySelector("article").classList.remove("hidden")
 
     
@@ -136,11 +142,11 @@ function showArticle(makePage){
         element.classList.add("hidden")
     })
     
-    document.querySelector("#button-"+makePage).classList.add("active")
+    document.querySelector("#button-"+makePage).classList.replace("inactive", "active")
     document.querySelector("#article-"+makePage).classList.remove("hidden")
     /*
     Kilde: https://codingbeautydev.com/blog/javascript-remove-class-from-multiple-elements/
-    Brukte kode fra denne siden for å kunne legge til å fjerne relevante klasser fra article elementet
+    Brukte kode fra denne siden for å kunne legge til og å fjerne relevante klasser fra article elementet
     */
 
 }
