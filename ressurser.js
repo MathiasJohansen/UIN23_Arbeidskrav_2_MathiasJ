@@ -98,13 +98,8 @@ const resources = [
 function renderResources(){
     let buttonsHTML = ""
 
-    resources.map(button => buttonsHTML += `<button onclick="showArticle()" class="active">${button.category}</button>`)
-
-    document.querySelector("main").innerHTML = buttonsHTML
-
-    let articleHTML = ""
-
-    resources.map(article => articleHTML += `<article class="hidden">
+    resources.map((article, makePage) => buttonsHTML += `<button onclick="showArticle(${makePage})" id="button-${makePage}">${article.category}</button>
+    <article id="article-${makePage}" class="hidden">
     <h2>${article.category}</h2>
     <p>${article.text}</p>
     <ul>
@@ -113,21 +108,40 @@ function renderResources(){
     </ul>
     </article>`)
 
-    document.querySelector("main").innerHTML += articleHTML
-    
-    const articleElement = document.querySelectorAll("article")
+    document.querySelector("main").innerHTML = buttonsHTML
 
-    if(articleElement.classList.contains())
+    document.querySelector("button").classList.add("active")
+    document.querySelector("article").classList.remove("hidden")
+
+    
+    /*
+    Kilde: https://github.com/toremake/UIN_coursefiles_2023/tree/main/legodudes_webshop/workshop_losning_oppg4-8
+    Tok inspirasjon fra løsningsforslaget og lagde dynamiske id'er slik at jeg kunne identifisere indexen som var relevant.
+    
+    */
+   
 }
 
-function showArticle(){
-    const articleElement = document.querySelectorAll("article")
+function showArticle(makePage){
+   
+    const buttonElements = document.querySelectorAll("button")
 
-    articleElement.forEach((element) => {
-        element.classList.remove("hidden")
-    });
+    buttonElements.forEach((element) => {
+        element.classList.remove("active")
+    })
 
+    const articleElements = document.querySelectorAll("article")
+
+    articleElements.forEach((element) => {
+        element.classList.add("hidden")
+    })
     
+    document.querySelector("#button-"+makePage).classList.add("active")
+    document.querySelector("#article-"+makePage).classList.remove("hidden")
+    /*
+    Kilde: https://codingbeautydev.com/blog/javascript-remove-class-from-multiple-elements/
+    Brukte kode fra denne siden for å kunne legge til å fjerne relevante klasser fra article elementet
+    */
 
 }
 

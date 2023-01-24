@@ -49,11 +49,15 @@ button {
     
 }
 
-button:hover {
+button:hover, button.active {
     color: white;
     background-color: var(--teal);
-    border: none;
+    border: 2px solid var(--teal);
+    border-bottom: none;
+    transition: ease-in-out .25s;
 }
+
+
 
 .hidden {
     visibility: hidden;
@@ -69,17 +73,20 @@ main article {
     max-width: 1164px;
     width: 100%;
     position: absolute;
-    
+    flex-direction: column;
 }
 
 main article a {
     color: var(--linkTeal);
-    align-items: left;
 }
 main article h2 {
     width: 100%;
     display: block;
     text-transform: uppercase;
+}
+
+main article p {
+    width: 60%;
 }
 
 main article ul {
